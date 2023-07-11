@@ -55,7 +55,7 @@
 </head>
 <body>
 		<form method="post" name="form2">
-		<table class="table table-hover">
+		<table class="table table-hover" id="list">
 			<tr>
 				<th><input type="checkbox" name="all" onClick="AllChecked()"></th>
 				<th>番号</th>
@@ -64,9 +64,9 @@
 				<th>作成者</th>
 				<th>日付</th>
 				<th><input value="選択した議事録情報を削除" class="btn btn-dark"></th>
-			</tr>
+			</tr >
 			<c:forEach  var="row" items="${memoList}" >
-			<tr>
+			<tr id =>
 				<td><input type="checkbox" name="one" onClick="DisChecked()"></td>
 				<td><input type="hidden" name="IDX" value="${row.IDX }">${row.IDX }</td>
 				<td><a href="#" onclick="detail('${row.IDX}')">${row.PURPOSE }<span class="d-inline-block text-truncate" style="max-width: 150px;"></span></a></td>

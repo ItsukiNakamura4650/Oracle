@@ -43,7 +43,6 @@ public class MemoController extends HttpServlet{
 		String memo = request.getParameter("memo");
 		String conclusion = request.getParameter("conclusion");
 		String post_date = request.getParameter("post_date");
-
 		String search = request.getParameter("search");
 		String filter = request.getParameter("filter");
 
@@ -103,6 +102,10 @@ public class MemoController extends HttpServlet{
 //				レコードの追加
 				memoDao.insert(map);
 
+				maps = memoDao.list();
+//				リストをリクエストスコープに格納してjspに送る準備をする
+				request.setAttribute("memoList", maps);
+
 //				リクエストを送らずにページ移動
 				response.sendRedirect(context + "/memo_servlet/list.do");
 				System.out.println("join.do処理終了");
@@ -159,6 +162,7 @@ public class MemoController extends HttpServlet{
 				System.out.println("delete.do処理終了");
 			}else if (url.indexOf("search.do")!= -1) {
 				System.out.println("search.do処理開始");
+				System.out.println(search);
 				System.out.println(filter);
 				if(search.equals("writerfilter")) {
 					System.out.println("search.do1処理開始");

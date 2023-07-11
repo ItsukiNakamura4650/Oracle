@@ -47,7 +47,7 @@
     	    }
     }).done(function (result) {
       // 通信成功時のコールバック
-
+    	 $('#list').html('<p>こんにちは</p>');
     }).fail(function () {
       // 通信失敗時のコールバック
       alert("読み込み失敗");
@@ -58,39 +58,37 @@
 
 
 </script>
-<form action="/MemoInfoOracle_1/memo_servlet/search.do" method="post">
+<form>
 <div class="col-sm-2">
 
-	<select name="search" class="form-control">
+	<select name="search" id="search" class="form-control">
 		<option value="writerfilter">作成者</option>
 		<option value="memofilter">議事録情報</option>
 		<option value="searchfilter">作成者＋議事録情報</option>
 	</select>
 </div>
 <div class="col-sm-4 mb-4">
-	<input type="text" name="filter" class="form-control">
-	<input type="submit" id="serch" value="検索" class="btn btn-success">
+	<input type="text" name="filter" id="filter" class="form-control">
+	<input type="submit" id="btn" value="検索" class="btn btn-success">
 </div>
 </form>
 <script type="text/javascript">
 // ボタン押下時の処理
-$('#serch').on('click',function(){
+$('#btn').on('click',function(){
 	  console.log("処理開始");
   $.ajax({
-    url: "/MemoInfoOracle_10/memo_servlet/serch.do",
+    url: "/MemoInfoOracle_10/memo_servlet/search.do",
     type: "POST",
     async: true,
-    data: {purpose : $("#purpose").val(),
-  	    location : $("#location").val(),
-  	    writer : $("#writer").val(),
-  	    attendee : $("#attendee").val(),
-  	    memo : $("#memo").val(),
-  	    conclusion : $("#conclusion").val(),
+    data: {search : $("#search").val(),
+    	  filter : $("#filter").val()
   	    }
+  })
+});
 
 </script>
 
-<div><%@ include file="list.jsp" %></div>
+<div  ><%@ include file="list.jsp" %></div>
 </div>
 
 
