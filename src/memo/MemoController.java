@@ -46,6 +46,8 @@ public class MemoController extends HttpServlet{
 		String search = request.getParameter("search");
 		String filter = request.getParameter("filter");
 
+		String[] values = request.getParameterValues("one");
+
 
 		try {
 			MemoDAO memoDao = new MemoDAO();
@@ -180,6 +182,23 @@ public class MemoController extends HttpServlet{
 				String page = "/memo/memo.jsp";
 				goToPage(request, response, page);
 				System.out.println("search.do処理終了");
+			}else if (url.indexOf("some.do")!= -1) {
+				System.out.println("some.do処理開始");
+
+				if(values == null) {
+
+				}else {
+//					複数の値をループで取り出す
+					for(String one: values) {
+
+						System.out.println("削除するユーザーのID: " + one);
+						memoDao.delete(one);
+
+					}
+				}
+
+				response.sendRedirect(context + "/memo_servlet/list.do");
+				System.out.println("somedelete.do処理終了");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

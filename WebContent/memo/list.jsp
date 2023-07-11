@@ -29,6 +29,17 @@
 		});
 	})
 
+	$(function(){
+		// IDがbtnDeleteのタグがクリック(click)したときの以下の関数(function)を実行
+		$("#btnsomeDelete").click(function() {
+		// 確認 - true, 取り消し - false
+			if(confirm("削除してもよろしいでしょうか?")){
+				document.form2.action = "/MemoInfoOracle_10/memo_servlet/some.do";
+				document.form2.submit();
+			}
+		});
+	})
+
 	  function AllChecked(){
 		    var all = document.form2.all.checked;
 		    for (var i=0; i<document.form2.one.length; i++){
@@ -63,11 +74,11 @@
 				<th>場所</th>
 				<th>作成者</th>
 				<th>日付</th>
-				<th><input value="選択した議事録情報を削除" class="btn btn-dark"></th>
+				<th><input value="選択した議事録情報を削除" class="btn btn-dark" type="button" id="btnsomeDelete"></th>
 			</tr >
 			<c:forEach  var="row" items="${memoList}" >
 			<tr id =>
-				<td><input type="checkbox" name="one" onClick="DisChecked()"></td>
+				<td><input type="checkbox" name="one" value="${row.IDX}" onClick="DisChecked()"></td>
 				<td><input type="hidden" name="IDX" value="${row.IDX }">${row.IDX }</td>
 				<td><a href="#" onclick="detail('${row.IDX}')">${row.PURPOSE }<span class="d-inline-block text-truncate" style="max-width: 150px;"></span></a></td>
 				<td>${row.LOCATION }</td>
