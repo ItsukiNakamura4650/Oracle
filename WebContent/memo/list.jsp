@@ -28,6 +28,28 @@
 			}
 		});
 	})
+
+	  function AllChecked(){
+		    var all = document.form2.all.checked;
+		    for (var i=0; i<document.form2.one.length; i++){
+		      document.form2.one[i].checked = all;
+		    }
+		  }
+
+	 function　DisChecked(){
+		    var checks = document.form2.one;
+		    var checksCount = 0;
+		    for (var i=0; i<checks.length; i++){
+		      if(checks[i].checked == false){
+		        document.form2.all.checked = false;
+		      }else{
+		        checksCount += 1;
+		        if(checksCount == checks.length){
+		          document.form2.all.checked = true;
+		        }
+		      }
+		    }
+		  }
 </script>
 
 </head>
@@ -35,7 +57,7 @@
 		<form method="post" name="form2">
 		<table class="table table-hover">
 			<tr>
-				<th><input type="checkbox"></th>
+				<th><input type="checkbox" name="all" onClick="AllChecked()"></th>
 				<th>番号</th>
 				<th>会議の目的</th>
 				<th>場所</th>
@@ -45,7 +67,7 @@
 			</tr>
 			<c:forEach  var="row" items="${memoList}" >
 			<tr>
-				<td><input type="checkbox"></td>
+				<td><input type="checkbox" name="one" onClick="DisChecked()"></td>
 				<td><input type="hidden" name="IDX" value="${row.IDX }">${row.IDX }</td>
 				<td><a href="#" onclick="detail('${row.IDX}')">${row.PURPOSE }<span class="d-inline-block text-truncate" style="max-width: 150px;"></span></a></td>
 				<td>${row.LOCATION }</td>
