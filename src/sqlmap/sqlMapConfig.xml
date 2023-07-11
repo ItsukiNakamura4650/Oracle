@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- xmlディレクティブ -->
+<!-- xml 文書のフォーマットを定義 -->
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+	</typeAliases>
+	<environments default="">
+		<environment id="">
+			<transactionManager type="JDBC" />
+			<dataSource type="JNDI">
+			<!-- 「Servers」直下のcontext.xmlにあるnameがmemoDBの情報を探し出し、読み込む -->
+				<property name="data_source" value="java:comp/env/memoDB" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="memo/memo.xml" />
+	</mappers>
+</configuration>
+

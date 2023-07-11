@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memo">
+
+
+  	<select id="select" resultType="map">
+    	SELECT * FROM memo
+	</select>
+
+	<insert id="insert">
+		insert into memo(purpose, location, writer, attendee, memo, conclusion)
+		values(#{purpose}, #{location}, #{writer}, #{attendee}, #{memo}, #{conclusion})
+	</insert>
+
+	<select id="detail" resultType="map" >
+    	SELECT * FROM memo WHERE idx = #{IDX}
+	</select>
+
+	<update id="update">
+		update memo set purpose= #{purpose},
+		location= #{location},
+		writer= #{writer},
+		attendee= #{attendee},
+		memo= #{memo},
+		conclusion= #{conclusion}
+		where idx = #{idx}
+	</update>
+
+	<delete id="delete">
+		delete from memo where idx=#{IDX}
+	</delete>
+
+	<select id="filter" resultType="map">
+		SELECT * FROM memo where writer like #{filter} OR memo like #{filter}
+	</select>
+
+	<select id="memofilter" resultType="map">
+		SELECT * FROM memo where memo like #{filter}
+	</select>
+
+	<select id="writerfilter" resultType="map">
+		SELECT * FROM memo where writer like #{filter}
+	</select>
+
+
+
+
+
+
+
+
+</mapper>
