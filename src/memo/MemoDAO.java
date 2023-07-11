@@ -24,6 +24,13 @@ public class MemoDAO {
 	public void insert(Map<String, Object> map) {
 		SqlSession sqlSession  =MybatisManager.getInstance().openSession();
 		sqlSession.insert("memo.insert", map);
+		sqlSession.commit();
+	}
+	public int count() {
+		SqlSession sqlSession  =MybatisManager.getInstance().openSession();
+		int count =sqlSession.selectOne("memo.count");
+		count +=1;
+		return  count;
 	}
 
 	public List<Map<String, Object>> writerfilter(String filter){

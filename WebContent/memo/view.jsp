@@ -17,7 +17,7 @@
 		$("#btnUpdate").click(function() {
 		// 確認 - true, 取り消し - false
 			if(confirm("更新してもよろしいでしょうか?")){
-				document.form2.action = "/MemoInfoOracle_1/memo_servlet/update.do";
+				document.form2.action = "/MemoInfoOracle_10/memo_servlet/update.do";
 				document.form2.submit();
 			}
 		});
@@ -28,7 +28,7 @@
 		$("#btnDelete").click(function() {
 		// 確認 - true, 取り消し - false
 			if(confirm("削除してもよろしいでしょうか?")){
-				document.form2.action = "/MemoInfoOracle_1/memo_servlet/delete.do";
+				document.form2.action = "/MemoInfoOracle_10/memo_servlet/delete.do";
 				document.form2.submit();
 			}
 		});

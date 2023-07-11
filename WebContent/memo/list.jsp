@@ -45,7 +45,7 @@
 			</c:forEach>
 		</table>
 		</form>
-<form name="form1" method="post" action="/MemoInfoOracle_1/memo_servlet/detail.do">
+<form name="form1" method="post" action="/MemoInfoOracle_10/memo_servlet/detail.do">
 	<input type="hidden" name="IDX">
 </form>
 </body>

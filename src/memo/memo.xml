@@ -7,12 +7,16 @@
 
 
   	<select id="select" resultType="map">
-    	SELECT * FROM memo
+    	SELECT * FROM memo ORDER BY idx DESC
+	</select>
+
+	<select id="count" resultType="Integer">
+	SELECT MAX(idx) FROM memo
 	</select>
 
 	<insert id="insert">
-		insert into memo(purpose, location, writer, attendee, memo, conclusion)
-		values(#{purpose}, #{location}, #{writer}, #{attendee}, #{memo}, #{conclusion})
+		insert into memo(idx,purpose, location, writer, attendee, memo, conclusion)
+		values(#{idx},#{purpose}, #{location}, #{writer}, #{attendee}, #{memo}, #{conclusion})
 	</insert>
 
 	<select id="detail" resultType="map" >

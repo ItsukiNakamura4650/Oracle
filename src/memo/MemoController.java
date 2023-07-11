@@ -48,7 +48,6 @@ public class MemoController extends HttpServlet{
 		String filter = request.getParameter("filter");
 
 
-
 		try {
 			MemoDAO memoDao = new MemoDAO();
 			Map<String, Object> map = new HashMap<>();
@@ -82,8 +81,17 @@ public class MemoController extends HttpServlet{
 //				エラーチェック(データ入力に異常があればfalse、異常がなければtrueを返してくる)
 //				boolean bRet = dataValidation(request,response,writer,purpose,location,attendee,memo,conclusion,post_date);
 //				if(bRet == false) return;
+				System.out.println(purpose);
+				System.out.println(location);
+				System.out.println(writer);
+				System.out.println(attendee);
+				System.out.println(memo);
+				System.out.println(conclusion);
 
+				int count=memoDao.count();
+				System.out.println(count);
 //				mapに画面から取得したパラメータをセットする
+				map.put("idx", count);
 				map.put("writer", writer);
 				map.put("purpose", purpose);
 				map.put("location", location);
