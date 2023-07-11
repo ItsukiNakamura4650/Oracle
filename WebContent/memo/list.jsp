@@ -17,11 +17,22 @@
 		document.form1.IDX.value = IDX;
 		document.form1.submit();
 	}
+
+	$(function(){
+		// IDがbtnDeleteのタグがクリック(click)したときの以下の関数(function)を実行
+		$("#btnDelete").click(function() {
+		// 確認 - true, 取り消し - false
+			if(confirm("削除してもよろしいでしょうか?")){
+				document.form2.action = "/MemoInfoOracle_1/memo_servlet/delete.do";
+				document.form2.submit();
+			}
+		});
+	})
 </script>
 
 </head>
 <body>
-		<form method="post">
+		<form method="post" name="form2">
 		<table class="table table-hover">
 			<tr>
 				<th><input type="checkbox"></th>
@@ -35,12 +46,12 @@
 			<c:forEach  var="row" items="${memoList}" >
 			<tr>
 				<td><input type="checkbox"></td>
-				<td>${row.IDX }</td>
+				<td><input type="hidden" name="IDX" value="${row.IDX }">${row.IDX }</td>
 				<td><a href="#" onclick="detail('${row.IDX}')">${row.PURPOSE }<span class="d-inline-block text-truncate" style="max-width: 150px;"></span></a></td>
 				<td>${row.LOCATION }</td>
 				<td>${row.WRITER }</td>
 				<td>${row.POST_DATE }</td>
-				<td><input type="button" value="削除"  class="btn btn-danger"></td>
+				<td><input type="button" value="削除" id="btnDelete" class="btn btn-danger"></td>
 			</tr>
 			</c:forEach>
 		</table>
