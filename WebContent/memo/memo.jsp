@@ -43,7 +43,7 @@ $(function() {
 </head>
 <body>
 <div class="container mt-5" >
-<h2 class="text-center"><a href="/MemoInfoOracle_1/memo_servlet/list.do">議事録情報一覧</a></h2>
+<h2 class="text-center"><a href="/MemoInfoOracle_10/memo_servlet/list.do">議事録情報一覧</a></h2>
 <div class="col-sm-2">
 
 	<input type="text" name="purpose" placeholder="会議の目的" class="form-control">
